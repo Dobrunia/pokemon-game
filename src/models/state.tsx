@@ -13,11 +13,9 @@ export class State {
 
   attack(target: PokemonType, attackStrategies: AttackStrategyType[]) {
     attackStrategies.forEach((attackStrategy) => {
-      const damage: number = attackStrategy.attack();
+      const damage: number = attackStrategy.getDamage();
       console.log(
-        `Сработала атака ${attackStrategy.getType()} по ${
-          target.name
-        } с уроном ${damage}!`
+        `Сработала атака ${attackStrategy.getType()} по ${target.getName()} с уроном ${damage}!`
       );
       target.takeDamage(damage);
     });
@@ -65,7 +63,7 @@ export class DeadState extends State {
   }
 
   override attack() {
-    console.log("Покемон не может бить");
+    console.log(`Покемон умер и не может бить`);
   }
 
   override takeDamage() {

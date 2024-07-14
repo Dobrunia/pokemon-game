@@ -64,19 +64,33 @@ export class Pokemon {
     //console.log(this.state.getStatus());
   }
 
-  setName() {
-    
+  setLevel(level: number) {
+    this.level = level;
+    this.attackDamage =
+      this.attackDamage +
+      STANDART_DATA.attackDamage +
+      SCALE_PER_LEVEL.attackDamage * this.level -
+      SCALE_PER_LEVEL.attackDamage;
+    this.health =
+      this.health +
+      STANDART_DATA.healthBar +
+      SCALE_PER_LEVEL.healthBar * this.level -
+      SCALE_PER_LEVEL.healthBar;
   }
 
   setPossibleAttacks(attacksArray: AttackStrategyType[]) {
     this.possibleAttacks = attacksArray;
   }
 
+  getName() {
+    return this.name;
+  }
+
   getAttackDamage() {
     return this.attackDamage;
   }
 
-  getInfo() {
+  consoleLogInfo() {
     return `Name: ${this.name}, Level: ${
       this.level
     }, Attack Damage: ${this.getAttackDamage()}, Health: ${this.state.getHealth()}, Armor: ${this.state.getArmor()}, Status: ${this.state.getStatus()}`;

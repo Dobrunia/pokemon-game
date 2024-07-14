@@ -11,8 +11,8 @@ function App() {
     maximus.attack(vaaramus);
   }
 
-  console.log(vaaramus.getInfo());
-  console.log(maximus.getInfo());
+  console.log(vaaramus.consoleLogInfo());
+  console.log(maximus.consoleLogInfo());
   return <></>;
 }
 
