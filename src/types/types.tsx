@@ -1,7 +1,8 @@
 export type PokemonType = {
-  name: string;
   attack?(target: PokemonType): void;
   takeDamage?(damage: number): void;
+  getAttackDamage?(): number;
+  setPossibleAttacks?(attacksArray: AttackStrategyType[]): void;
   getInfo?(): void;
 };
 
@@ -11,10 +12,9 @@ export type AttackStrategyType = {
 };
 
 export type StateType = {
-  attackDamage: number;
-  health: number;
-  armor: number;
   attack(target: PokemonType, attackStrategies: AttackStrategyType[]): void;
   takeDamage(damage: number): StateType;
+  getHealth(): number;
+  getArmor(): number;
   getStatus(): string;
 };

@@ -6,7 +6,7 @@ function App() {
   const vaaramus = new Vaaramus(1);
   const maximus = new Maximus(1);
 
-  for (let i = 0; i < 5; i++) {
+  while (vaaramus.state.getStatus() !== "DeadState" && maximus.state.getStatus() !== "DeadState") {
     vaaramus.attack(maximus);
     maximus.attack(vaaramus);
   }

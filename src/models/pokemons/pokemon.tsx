@@ -18,12 +18,12 @@ const SCALE_PER_LEVEL = {
 };
 
 export class Pokemon {
-  public name: string;
+  private name: string;
   private level: number;
-  protected attackDamage: number;
+  private attackDamage: number;
   private health: number;
   private armor: number;
-  protected possibleAttacks: AttackStrategyType[];
+  private possibleAttacks: AttackStrategyType[];
   private state: StateType;
 
   constructor(
@@ -46,29 +46,39 @@ export class Pokemon {
       SCALE_PER_LEVEL.healthBar * this.level -
       SCALE_PER_LEVEL.healthBar;
     this.armor = armor;
-    this.possibleAttacks = [new AttackStrategy(this.attackDamage)];
     this.state = new FunctioningState(
       this.attackDamage,
       this.health,
       this.armor
     );
+    this.possibleAttacks = [new AttackStrategy(this.attackDamage)];
   }
 
   attack(target: PokemonType) {
-    console.log(`${this.name} наносит удар!`);
+    //console.log(`${this.name} наносит удар!`);
     this.state.attack(target, this.possibleAttacks);
   }
 
   takeDamage(damage: number) {
     this.state = this.state.takeDamage(damage);
-    console.log(this.state.getStatus());
+    //console.log(this.state.getStatus());
+  }
+
+  setName() {
+    
+  }
+
+  setPossibleAttacks(attacksArray: AttackStrategyType[]) {
+    this.possibleAttacks = attacksArray;
+  }
+
+  getAttackDamage() {
+    return this.attackDamage;
   }
 
   getInfo() {
-    return `Name: ${this.name}, Level: ${this.level}, Attack Damage: ${
-      this.state.attackDamage
-    }, Health: ${this.state.health}, Armor: ${
-      this.state.armor
-    }, Status: ${this.state.getStatus()}`;
+    return `Name: ${this.name}, Level: ${
+      this.level
+    }, Attack Damage: ${this.getAttackDamage()}, Health: ${this.state.getHealth()}, Armor: ${this.state.getArmor()}, Status: ${this.state.getStatus()}`;
   }
 }

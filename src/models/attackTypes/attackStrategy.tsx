@@ -22,16 +22,16 @@ export class CriticalAttack extends AttackStrategy {
 
   constructor(damage: number, chance: number, multiplier: number) {
     super(damage);
-    this.type = "критический";
     this.chance = chance;
     this.multiplier = multiplier / 100;
   }
 
-  attack() {
+  override attack() {
     if (Math.random() < this.chance / 100) {
+      this.type = "критический";
       return this.damage * this.multiplier - this.damage;
     } else {
-      return 0;
+      return this.damage;
     }
   }
 }
