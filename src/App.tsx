@@ -1,17 +1,18 @@
 import "./App.css";
 import { Vaaramus } from "./models/pokemons/characters/vaaramus.tsx";
+import { Maximus } from "./models/pokemons/characters/maximus.tsx";
 
 function App() {
-  const vaaramus1 = new Vaaramus(1);
-  const vaaramus2 = new Vaaramus(1);
+  const vaaramus = new Vaaramus(1);
+  const maximus = new Maximus(1);
 
   for (let i = 0; i < 5; i++) {
-    vaaramus1.attack(vaaramus2);
-    vaaramus2.attack(vaaramus1);
+    vaaramus.attack(maximus);
+    maximus.attack(vaaramus);
   }
 
-  console.log(vaaramus1.getInfo());
-  console.log(vaaramus2.getInfo());
+  console.log(vaaramus.getInfo());
+  console.log(maximus.getInfo());
   return <></>;
 }
 

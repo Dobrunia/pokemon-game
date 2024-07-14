@@ -18,7 +18,7 @@ const SCALE_PER_LEVEL = {
 };
 
 export class Pokemon {
-  private name: string;
+  public name: string;
   private level: number;
   protected attackDamage: number;
   private health: number;
@@ -54,17 +54,17 @@ export class Pokemon {
     );
   }
 
-  protected attack(target: PokemonType) {
+  attack(target: PokemonType) {
     console.log(`${this.name} наносит удар!`);
     this.state.attack(target, this.possibleAttacks);
   }
 
-  protected takeDamage(damage: number) {
+  takeDamage(damage: number) {
     this.state = this.state.takeDamage(damage);
     console.log(this.state.getStatus());
   }
 
-  public getInfo() {
+  getInfo() {
     return `Name: ${this.name}, Level: ${this.level}, Attack Damage: ${
       this.state.attackDamage
     }, Health: ${this.state.health}, Armor: ${
