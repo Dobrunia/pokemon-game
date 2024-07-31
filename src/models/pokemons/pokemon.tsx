@@ -17,6 +17,7 @@ const SCALE_PER_LEVEL = {
   healthBar: 10,
 };
 
+//text
 export class Pokemon {
   private name: string;
   private level: number;
